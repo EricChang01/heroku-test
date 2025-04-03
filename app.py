@@ -8,6 +8,16 @@ app = Flask(__name__, static_folder='client/build', static_url_path='')
 def hello():
     return jsonify({'message': 'Hello from Flask backend!'})
 
+# New GET API endpoint
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    # For example, return a list of items or any other data
+    data = {
+        'items': ['apple', 'banana', 'cherry'],
+        'description': 'A sample list of fruits'
+    }
+    return jsonify(data)
+
 # Serve React static files
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
